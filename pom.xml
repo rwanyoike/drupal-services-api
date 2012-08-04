@@ -41,6 +41,12 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>scm:git:git@i2m.dk:drupal_services_api_client.git</connection>
+        <url>scm:git:git@i2m.dk:drupal_services_api_client.git</url>
+        <developerConnection>scm:git:git@i2m.dk:drupal_services_api_client.git</developerConnection>
+    </scm>
+  
     <developers>
         <developer>
             <name>Raymond Wanyoike</name>

@@ -51,6 +51,7 @@
             <timezone>+3</timezone>
         </developer>
     </developers>
+    
     <build>
         <plugins>
             <plugin>
@@ -63,8 +64,25 @@
                     <showDeprecation>true</showDeprecation>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>perform</goal>
+                        </goals>
+                        <configuration>
+                            <pomFileName>pom.xml</pomFileName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans.hint.license>gpl30</netbeans.hint.license>

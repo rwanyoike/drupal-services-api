@@ -33,11 +33,24 @@ public class DrupalHttpClient extends DefaultHttpClient {
     public DrupalHttpClient() {
         BasicHttpParams params = new BasicHttpParams();
         params
-                .setParameter(AllClientPNames.CONNECTION_TIMEOUT, 10000)
+                .setParameter(AllClientPNames.CONNECTION_TIMEOUT, 30000)
                 .setParameter(AllClientPNames.COOKIE_POLICY,
                 CookiePolicy.BEST_MATCH)
                 .setParameter(AllClientPNames.HTTP_CONTENT_CHARSET, HTTP.UTF_8)
-                .setParameter(AllClientPNames.SO_TIMEOUT, 10000);
+                .setParameter(AllClientPNames.SO_TIMEOUT, 30000);
+
+        this.setParams(params);
+    }
+
+    DrupalHttpClient(int connectionTimeout, int socketTimeout) {
+        BasicHttpParams params = new BasicHttpParams();
+        params
+                .setParameter(AllClientPNames.CONNECTION_TIMEOUT,
+                connectionTimeout)
+                .setParameter(AllClientPNames.COOKIE_POLICY,
+                CookiePolicy.BEST_MATCH)
+                .setParameter(AllClientPNames.HTTP_CONTENT_CHARSET, HTTP.UTF_8)
+                .setParameter(AllClientPNames.SO_TIMEOUT, socketTimeout);
 
         this.setParams(params);
     }

@@ -36,4 +36,10 @@ public class DefaultDrupalClient extends AbstractDrupalClient {
     public DefaultDrupalClient(URI hostname, String endPoint) {
         super(hostname, endPoint);
     }
+
+    public DefaultDrupalClient(URI hostname, String endpoint,
+            int connectionTimeout, int socketTimeout) {
+        super(new DrupalHttpClient(connectionTimeout, socketTimeout), hostname,
+                endpoint);
+    }
 }

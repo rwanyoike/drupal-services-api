@@ -17,7 +17,6 @@
 package dk.i2m.drupal.core;
 
 import dk.i2m.drupal.DrupalHttpClient;
-import dk.i2m.drupal.core.DrupalClient;
 import java.net.URI;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;

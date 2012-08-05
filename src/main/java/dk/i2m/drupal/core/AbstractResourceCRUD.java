@@ -16,13 +16,10 @@
  */
 package dk.i2m.drupal.core;
 
-import dk.i2m.drupal.core.DrupalClient;
-import dk.i2m.drupal.core.ResourceCRUD;
 import dk.i2m.drupal.util.URLBuilder;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
-import java.util.logging.Logger;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;

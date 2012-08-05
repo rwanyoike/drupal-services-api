@@ -64,6 +64,9 @@ public class ImageWrapper implements FormAPIField<Image> {
             nvps.add(new BasicNameValuePair(name + "[" + language + "]" + "["
                     + i + "][fid]", image.getFid()));
 
+            nvps.add(new BasicNameValuePair(name + "[" + language + "]" + "["
+                    + i + "][display]", "1"));
+            
             if (image.getAlt() != null) {
                 nvps.add(new BasicNameValuePair(name + "[" + language + "]"
                         + "[" + i + "][alt]", image.getAlt()));

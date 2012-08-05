@@ -42,6 +42,7 @@ import org.apache.http.entity.mime.MultipartEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.tika.config.TikaConfig;
+import org.apache.tika.io.IOUtils;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MediaType;
 import org.apache.tika.mime.MimeType;
@@ -78,7 +79,8 @@ public class FileResource extends AbstractResourceCRUD {
      * @throws FileNotFoundException
      * @throws IOException 
      */
-    public FileResponce createRaw(File file, String fileName) throws MimeTypeException,
+    public FileResponce createRaw(File file, String fileName) throws
+            MimeTypeException,
             MalformedURLException, ClientProtocolException,
             UnsupportedEncodingException, FileNotFoundException, IOException {
         URLBuilder builder = new URLBuilder(drupalClient.getHostname());
@@ -109,9 +111,10 @@ public class FileResource extends AbstractResourceCRUD {
         String response = drupalClient.getHttpClient().execute(post, handler);
 
         Gson gson = new Gson();
-        Type typeOfT = new TypeToken<List<FileResponce>>(){}.getType();
+        Type typeOfT = new TypeToken<List<FileResponce>>() {
+        }.getType();
         List<FileResponce> fromJson = gson.fromJson(response, typeOfT);
-        
+
         return fromJson.get(0);
     }
 
@@ -119,28 +122,12 @@ public class FileResource extends AbstractResourceCRUD {
      * Returns the contents of a file as an array of bytes.
      * 
      * @param file
-     * @return 
+     * @return
+     * @throws FileNotFoundException
+     * @throws IOException 
      */
-    private byte[] get(File file) {
-        byte[] fileData = new byte[(int) file.length()];
-        FileInputStream fis = null;
-
-        try {
-            fis = new FileInputStream(file);
-            fis.read(fileData);
-        } catch (IOException ex) {
-            fileData = null;
-        } finally {
-            if (fis != null) {
-                try {
-                    fis.close();
-                } catch (IOException ex) {
-                    // ignore
-                }
-            }
-        }
-
-        return fileData;
+    private byte[] get(File file) throws FileNotFoundException, IOException {
+        return IOUtils.toByteArray(new FileInputStream(file));
     }
 
     @Override

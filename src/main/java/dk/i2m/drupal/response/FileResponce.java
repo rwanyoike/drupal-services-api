@@ -17,7 +17,7 @@
 package dk.i2m.drupal.response;
 
 import com.google.gson.annotations.SerializedName;
-import dk.i2m.drupal.resources.FileResource;
+import dk.i2m.drupal.resource.FileResource;
 import java.net.URI;
 
 /**

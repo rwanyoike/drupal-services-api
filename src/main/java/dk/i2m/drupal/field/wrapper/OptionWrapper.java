@@ -14,10 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.fields.wrappers;
+package dk.i2m.drupal.field.wrapper;
 
 import dk.i2m.drupal.core.FormAPIField;
-import dk.i2m.drupal.fields.Image;
+import dk.i2m.drupal.field.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -28,53 +28,38 @@ import org.apache.http.message.BasicNameValuePair;
  *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public class ImageWrapper implements FormAPIField<Image> {
+public class OptionWrapper implements FormAPIField<Option> {
 
-    private List<Image> images = new ArrayList<Image>();
+    private List<Option> options = new ArrayList<Option>();
 
     private String name;
 
-    public ImageWrapper() {
+    public OptionWrapper() {
     }
 
-    public ImageWrapper(String name) {
+    public OptionWrapper(String name) {
         this.name = name;
     }
 
-    public ImageWrapper(String name, String fid, String alt, String title) {
+    public OptionWrapper(String name, Boolean value) {
         this(name);
-        images.add(new Image(fid, alt, title));
+        options.add(new Option(value));
     }
 
     @Override
-    public void add(Image field) {
-        images.add(field);
+    public void add(Option field) {
+        options.add(field);
     }
 
     @Override
-    public Set<NameValuePair> setup(String language,
-            Set<NameValuePair> nvps) {
-        for (int i = 0; i < images.size(); i++) {
-            Image image = images.get(i);
+    public Set<NameValuePair> setup(String language, Set<NameValuePair> nvps) {
+        for (int i = 0; i < options.size(); i++) {
+            Option option = options.get(i);
 
-            if (image.getFid() == null) {
-                throw new IllegalArgumentException("fid cannot be null");
-            }
-
-            nvps.add(new BasicNameValuePair(name + "[" + language + "]" + "["
-                    + i + "][fid]", image.getFid()));
-
-            nvps.add(new BasicNameValuePair(name + "[" + language + "]" + "["
-                    + i + "][display]", "1"));
-            
-            if (image.getAlt() != null) {
+            if (option.getValue() != null) {
                 nvps.add(new BasicNameValuePair(name + "[" + language + "]"
-                        + "[" + i + "][alt]", image.getAlt()));
-            }
-            
-            if (image.getTitle() != null) {
-                nvps.add(new BasicNameValuePair(name + "[" + language + "]"
-                        + "[" + i + "][title]", image.getTitle()));
+                        + "["
+                        + i + "]", (option.getValue() ? "1" : "0")));
             }
         }
 

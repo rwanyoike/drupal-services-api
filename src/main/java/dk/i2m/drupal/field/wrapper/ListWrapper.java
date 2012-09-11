@@ -14,12 +14,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.fields.wrappers;
+package dk.i2m.drupal.field.wrapper;
 
 import dk.i2m.drupal.core.FormAPIField;
-import dk.i2m.drupal.fields.Option;
+import dk.i2m.drupal.field.List;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -28,38 +27,38 @@ import org.apache.http.message.BasicNameValuePair;
  *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public class OptionWrapper implements FormAPIField<Option> {
+public class ListWrapper implements FormAPIField<List> {
 
-    private List<Option> options = new ArrayList<Option>();
+    private java.util.List<List> lists = new ArrayList<List>();
 
     private String name;
 
-    public OptionWrapper() {
+    public ListWrapper() {
     }
 
-    public OptionWrapper(String name) {
+    public ListWrapper(String name) {
         this.name = name;
     }
 
-    public OptionWrapper(String name, Boolean value) {
+    public ListWrapper(String name, String value) {
         this(name);
-        options.add(new Option(value));
+        lists.add(new List(value));
     }
 
     @Override
-    public void add(Option field) {
-        options.add(field);
+    public void add(List field) {
+        lists.add(field);
     }
 
     @Override
-    public Set<NameValuePair> setup(String language, Set<NameValuePair> nvps) {
-        for (int i = 0; i < options.size(); i++) {
-            Option option = options.get(i);
+    public Set<NameValuePair> setup(String language,
+            Set<NameValuePair> nvps) {
+        for (int i = 0; i < lists.size(); i++) {
+            List list = lists.get(i);
 
-            if (option.getValue() != null) {
-                nvps.add(new BasicNameValuePair(name + "[" + language + "]"
-                        + "["
-                        + i + "]", (option.getValue() ? "1" : "0")));
+            if (list.getValue() != null) {
+                nvps.add(new BasicNameValuePair(name + "[" + language + "][" + i
+                        + "]", list.getValue()));
             }
         }
 

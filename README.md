@@ -9,7 +9,7 @@ mvn clean install;
 If using Maven (not hosted):
 ```xml
 <dependency>
-    <groupId>dk.i2m.services.drupal</groupId>
+    <groupId>dk.i2m.drupal</groupId>
     <artifactId>services-api-client</artifactId>
     <version>1.0-SNAPSHOT</version>
     <scope>compile</scope>

@@ -14,34 +14,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.fields;
+package dk.i2m.drupal.field;
 
 /**
  *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public class Option {
+public class Number extends Text {
 
-    private Boolean value;
-
-    public Option() {
-    }
-
-    public Option(Boolean value) {
-        this.value = value;
-    }
-
-    /**
-     * @return the value
-     */
-    public Boolean getValue() {
-        return value;
-    }
-
-    /**
-     * @param value the value to set
-     */
-    public void setValue(Boolean value) {
-        this.value = value;
+    public Number(String value) {
+        super(value);
     }
 }

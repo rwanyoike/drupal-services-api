@@ -14,15 +14,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.fields;
+package dk.i2m.drupal.field;
 
 /**
  *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public class Number extends Text {
+public class Basic {
 
-    public Number(String value) {
-        super(value);
+    private String value;
+
+    public Basic() {
+    }
+
+    public Basic(String value) {
+        this.value = value;
+    }
+
+    /**
+     * @return the value
+     */
+    public String getValue() {
+        return value;
+    }
+
+    /**
+     * @param value the value to set
+     */
+    public void setValue(String value) {
+        this.value = value;
     }
 }

@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.resources;
+package dk.i2m.drupal.resource;
 
 import com.google.gson.Gson;
 import dk.i2m.drupal.core.AbstractResourceCRUD;
@@ -44,7 +44,7 @@ public class NodeResource extends AbstractResourceCRUD {
         String response = super.create(uefe);
         Gson gson = new Gson();
         NodeResponse fromJson = gson.fromJson(response, NodeResponse.class);
-        
+
         return (T) fromJson;
     }
 

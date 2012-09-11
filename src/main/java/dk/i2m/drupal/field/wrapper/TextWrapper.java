@@ -14,10 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.fields.wrappers;
+package dk.i2m.drupal.field.wrapper;
 
 import dk.i2m.drupal.core.FormAPIField;
-import dk.i2m.drupal.fields.Basic;
+import dk.i2m.drupal.field.Text;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -26,32 +28,55 @@ import org.apache.http.message.BasicNameValuePair;
  *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public class BasicWrapper implements FormAPIField<Basic> {
+public class TextWrapper implements FormAPIField<Text> {
 
-    private Basic basic;
+    private List<Text> texts = new ArrayList<Text>();
 
     private String name;
 
-    public BasicWrapper() {
+    public TextWrapper() {
     }
 
-    public BasicWrapper(String name) {
+    public TextWrapper(String name) {
         this.name = name;
     }
 
-    public BasicWrapper(String name, String value) {
-        this.basic = new Basic(value);
-        this.name = name;
+    public TextWrapper(String name, String value) {
+        this(name);
+        texts.add(new Text(null, value, null));
+    }
+
+    public TextWrapper(String name, String summary, String value, String format) {
+        this(name);
+        texts.add(new Text(summary, value, format));
     }
 
     @Override
-    public void add(Basic field) {
-        this.basic = field;
+    public void add(Text field) {
+        texts.add(field);
     }
 
     @Override
     public Set<NameValuePair> setup(String language, Set<NameValuePair> nvps) {
-        nvps.add(new BasicNameValuePair(name, basic.getValue()));
+        for (int i = 0; i < texts.size(); i++) {
+            Text text = texts.get(i);
+
+            if (text.getSummary() != null) {
+                nvps.add(new BasicNameValuePair(name + "[" + language + "][" + i
+                        + "][summary]", text.getSummary()));
+            }
+
+            if (text.getValue() != null) {
+                nvps.add(new BasicNameValuePair(name + "[" + language + "][" + i
+                        + "][value]", text.getValue()));
+            }
+
+            if (text.getFormat() != null) {
+                nvps.add(new BasicNameValuePair(name + "[" + language + "][" + i
+                        + "][format]", text.getFormat()));
+            }
+        }
+
         return nvps;
     }
 

@@ -14,45 +14,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.fields;
+package dk.i2m.drupal.field;
 
 /**
  *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public class Text {
-
-    private String summary;
+public class List {
 
     private String value;
 
-    private String format;
-
-    public Text() {
+    public List() {
     }
 
-    public Text(String value) {
+    public List(String value) {
         this.value = value;
-    }
-
-    public Text(String summary, String value, String format) {
-        this.summary = summary;
-        this.value = value;
-        this.format = format;
-    }
-
-    /**
-     * @return the summary
-     */
-    public String getSummary() {
-        return summary;
-    }
-
-    /**
-     * @param summary the summary to set
-     */
-    public void setSummary(String summary) {
-        this.summary = summary;
     }
 
     /**
@@ -67,19 +43,5 @@ public class Text {
      */
     public void setValue(String value) {
         this.value = value;
-    }
-
-    /**
-     * @return the format
-     */
-    public String getFormat() {
-        return format;
-    }
-
-    /**
-     * @param format the format to set
-     */
-    public void setFormat(String format) {
-        this.format = format;
     }
 }

@@ -14,10 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.fields.wrappers;
+package dk.i2m.drupal.field.wrapper;
 
 import dk.i2m.drupal.core.FormAPIField;
-import dk.i2m.drupal.fields.Text;
+import dk.i2m.drupal.field.Image;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -28,52 +28,53 @@ import org.apache.http.message.BasicNameValuePair;
  *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public class TextWrapper implements FormAPIField<Text> {
+public class ImageWrapper implements FormAPIField<Image> {
 
-    private List<Text> texts = new ArrayList<Text>();
+    private List<Image> images = new ArrayList<Image>();
 
     private String name;
 
-    public TextWrapper() {
+    public ImageWrapper() {
     }
 
-    public TextWrapper(String name) {
+    public ImageWrapper(String name) {
         this.name = name;
     }
 
-    public TextWrapper(String name, String value) {
+    public ImageWrapper(String name, String fid, String alt, String title) {
         this(name);
-        texts.add(new Text(null, value, null));
-    }
-
-    public TextWrapper(String name, String summary, String value, String format) {
-        this(name);
-        texts.add(new Text(summary, value, format));
+        images.add(new Image(fid, alt, title));
     }
 
     @Override
-    public void add(Text field) {
-        texts.add(field);
+    public void add(Image field) {
+        images.add(field);
     }
 
     @Override
-    public Set<NameValuePair> setup(String language, Set<NameValuePair> nvps) {
-        for (int i = 0; i < texts.size(); i++) {
-            Text text = texts.get(i);
+    public Set<NameValuePair> setup(String language,
+            Set<NameValuePair> nvps) {
+        for (int i = 0; i < images.size(); i++) {
+            Image image = images.get(i);
 
-            if (text.getSummary() != null) {
-                nvps.add(new BasicNameValuePair(name + "[" + language + "][" + i
-                        + "][summary]", text.getSummary()));
+            if (image.getFid() == null) {
+                throw new IllegalArgumentException("fid cannot be null");
             }
 
-            if (text.getValue() != null) {
-                nvps.add(new BasicNameValuePair(name + "[" + language + "][" + i
-                        + "][value]", text.getValue()));
+            nvps.add(new BasicNameValuePair(name + "[" + language + "]" + "["
+                    + i + "][fid]", image.getFid()));
+
+            nvps.add(new BasicNameValuePair(name + "[" + language + "]" + "["
+                    + i + "][display]", "1"));
+
+            if (image.getAlt() != null) {
+                nvps.add(new BasicNameValuePair(name + "[" + language + "]"
+                        + "[" + i + "][alt]", image.getAlt()));
             }
 
-            if (text.getFormat() != null) {
-                nvps.add(new BasicNameValuePair(name + "[" + language + "][" + i
-                        + "][format]", text.getFormat()));
+            if (image.getTitle() != null) {
+                nvps.add(new BasicNameValuePair(name + "[" + language + "]"
+                        + "[" + i + "][title]", image.getTitle()));
             }
         }
 

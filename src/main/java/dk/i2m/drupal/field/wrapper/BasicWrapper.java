@@ -14,11 +14,10 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.fields.wrappers;
+package dk.i2m.drupal.field.wrapper;
 
 import dk.i2m.drupal.core.FormAPIField;
-import dk.i2m.drupal.fields.List;
-import java.util.ArrayList;
+import dk.i2m.drupal.field.Basic;
 import java.util.Set;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -27,41 +26,32 @@ import org.apache.http.message.BasicNameValuePair;
  *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public class ListWrapper implements FormAPIField<List> {
+public class BasicWrapper implements FormAPIField<Basic> {
 
-    private java.util.List<List> lists = new ArrayList<List>();
+    private Basic basic;
 
     private String name;
 
-    public ListWrapper() {
+    public BasicWrapper() {
     }
 
-    public ListWrapper(String name) {
+    public BasicWrapper(String name) {
         this.name = name;
     }
 
-    public ListWrapper(String name, String value) {
-        this(name);
-        lists.add(new List(value));
+    public BasicWrapper(String name, String value) {
+        this.basic = new Basic(value);
+        this.name = name;
     }
 
     @Override
-    public void add(List field) {
-        lists.add(field);
+    public void add(Basic field) {
+        this.basic = field;
     }
 
     @Override
-    public Set<NameValuePair> setup(String language,
-            Set<NameValuePair> nvps) {
-        for (int i = 0; i < lists.size(); i++) {
-            List list = lists.get(i);
-
-            if (list.getValue() != null) {
-                nvps.add(new BasicNameValuePair(name + "[" + language + "][" + i
-                        + "]", list.getValue()));
-            }
-        }
-
+    public Set<NameValuePair> setup(String language, Set<NameValuePair> nvps) {
+        nvps.add(new BasicNameValuePair(name, basic.getValue()));
         return nvps;
     }
 

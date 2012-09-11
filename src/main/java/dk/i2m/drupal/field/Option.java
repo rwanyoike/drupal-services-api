@@ -14,23 +14,34 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package dk.i2m.drupal.fields.wrappers;
+package dk.i2m.drupal.field;
 
 /**
  *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public class NumberWrapper extends TextWrapper {
+public class Option {
 
-    public NumberWrapper() {
-        super();
+    private Boolean value;
+
+    public Option() {
     }
 
-    public NumberWrapper(String name) {
-        super(name);
+    public Option(Boolean value) {
+        this.value = value;
     }
 
-    public NumberWrapper(String name, String value) {
-        super(name, value);
+    /**
+     * @return the value
+     */
+    public Boolean getValue() {
+        return value;
+    }
+
+    /**
+     * @param value the value to set
+     */
+    public void setValue(Boolean value) {
+        this.value = value;
     }
 }

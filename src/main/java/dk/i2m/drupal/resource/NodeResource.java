@@ -17,35 +17,127 @@
 package dk.i2m.drupal.resource;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import dk.i2m.drupal.core.AbstractResourceCRUD;
 import dk.i2m.drupal.core.DrupalClient;
-import dk.i2m.drupal.response.NodeResponse;
+import dk.i2m.drupal.message.FileMessage;
+import dk.i2m.drupal.message.NodeMessage;
+import dk.i2m.drupal.util.URLBuilder;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import org.apache.http.client.ClientProtocolException;
+import java.util.List;
+import java.util.Map;
+import org.apache.http.client.HttpResponseException;
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.impl.client.BasicResponseHandler;
 
 /**
- * The core that allows content to be submitted to the site using the usual 
- * form API pattern.
- * 
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
 public class NodeResource extends AbstractResourceCRUD {
 
-    public NodeResource(DrupalClient drupalClient) {
-        super(drupalClient);
+    public NodeResource(DrupalClient dc) {
+        super(dc);
     }
 
-    @Override
-    public <T> T create(UrlEncodedFormEntity uefe) throws MalformedURLException,
-            ClientProtocolException, UnsupportedEncodingException, IOException {
-        String response = super.create(uefe);
-        Gson gson = new Gson();
-        NodeResponse fromJson = gson.fromJson(response, NodeResponse.class);
+    public NodeMessage create(UrlEncodedFormEntity uefe) throws
+            HttpResponseException, IOException {
+        URLBuilder builder = new URLBuilder(getDc().getHostname());
+        builder.add(getDc().getEndpoint());
+        builder.add(getAlias());
 
-        return (T) fromJson;
+        HttpPost method = new HttpPost(builder.toURI());
+        method.setEntity(uefe);
+
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String response = getDc().getHttpClient().execute(method, handler);
+
+        return new Gson().fromJson(response, NodeMessage.class);
+    }
+
+    public NodeMessage retrieve(Long id) throws HttpResponseException,
+            IOException {
+        URLBuilder builder = new URLBuilder(getDc().getHostname());
+        builder.add(getDc().getEndpoint());
+        builder.add(getAlias());
+        builder.add(id);
+
+        HttpGet method = new HttpGet(builder.toURI());
+
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String response = getDc().getHttpClient().execute(method, handler);
+
+        return new Gson().fromJson(response, NodeMessage.class);
+    }
+
+    public NodeMessage update(Long id, UrlEncodedFormEntity uefe) throws
+            HttpResponseException, IOException {
+        URLBuilder builder = new URLBuilder(getDc().getHostname());
+        builder.add(getDc().getEndpoint());
+        builder.add(getAlias());
+        builder.add(id);
+
+        HttpPut method = new HttpPut(builder.toURI());
+        method.setEntity(uefe);
+
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String response = getDc().getHttpClient().execute(method, handler);
+
+        return new Gson().fromJson(response, NodeMessage.class);
+    }
+
+    public boolean delete(Long id) throws HttpResponseException, IOException {
+        URLBuilder builder = new URLBuilder(getDc().getHostname());
+        builder.add(getDc().getEndpoint());
+        builder.add(getAlias());
+        builder.add(id);
+
+        HttpDelete method = new HttpDelete(builder.toURI());
+
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String response = getDc().getHttpClient().execute(method, handler);
+
+        return Boolean.valueOf(response);
+    }
+
+    public List<NodeMessage> index(Map<Object, Object> params) throws
+            HttpResponseException, IOException {
+        URLBuilder builder = new URLBuilder(getDc().getHostname());
+        builder.add(getDc().getEndpoint());
+        builder.add(getAlias());
+        builder.addQuery(params);
+
+        HttpGet method = new HttpGet(builder.toURI());
+
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String response = getDc().getHttpClient().execute(method, handler);
+
+        return new Gson().fromJson(response,
+                new TypeToken<List<NodeMessage>>() {
+                }.getType());
+    }
+    
+    public List<FileMessage> loadFiles(Long id) throws HttpResponseException, IOException {
+        URLBuilder builder = new URLBuilder(getDc().getHostname());
+        builder.add(getDc().getEndpoint());
+        builder.add(getAlias());
+        builder.add(id);
+        builder.add("files");
+        // Do not return the file contents (saves bandwidth)
+        builder.add(0);
+
+        HttpGet method = new HttpGet(builder.toURI());
+
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String response = getDc().getHttpClient().execute(method, handler);
+
+        return new Gson().fromJson(response,
+                new TypeToken<List<FileMessage>>() {
+                }.getType());
     }
 
     @Override

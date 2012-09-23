@@ -20,15 +20,11 @@ import dk.i2m.drupal.core.AbstractResourceCRUD;
 import dk.i2m.drupal.core.DrupalClient;
 import dk.i2m.drupal.util.URLBuilder;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.http.Consts;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpResponseException;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -36,84 +32,52 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.message.BasicNameValuePair;
 
 /**
- * Enables the user registration and login system.
- * 
+ *
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
 public class UserResource extends AbstractResourceCRUD {
-
-    private static final Logger LOG = Logger.getLogger(UserResource.class.
-            getName());
-
-    private DrupalClient drupalClient;
 
     private String username;
 
     private String password;
 
-    public UserResource(DrupalClient drupalClient) {
-        super(drupalClient);
-        this.drupalClient = drupalClient;
+    public UserResource(DrupalClient dc) {
+        super(dc);
     }
 
-    public UserResource(DrupalClient drupalClient, String username,
-            String password) {
-        this(drupalClient);
+    public UserResource(DrupalClient dc, String username, String password) {
+        this(dc);
         this.username = username;
         this.password = password;
     }
 
-    /**
-     * Login a user for a new session.
-     * 
-     * @throws MalformedURLException
-     * @throws ClientProtocolException
-     * @throws UnsupportedEncodingException
-     * @throws IOException 
-     */
-    public void login() throws MalformedURLException, ClientProtocolException,
-            UnsupportedEncodingException, IOException {
-        URLBuilder builder = new URLBuilder(drupalClient.getHostname());
-        builder
-                .add(drupalClient.getEndpoint())
-                .add(getAlias())
-                .add("login");
+    public void login() throws HttpResponseException, IOException {
+        URLBuilder builder = new URLBuilder(getDc().getHostname());
+        builder.add(getDc().getEndpoint());
+        builder.add(getAlias());
+        builder.add("login");
 
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         nvps.add(new BasicNameValuePair("username", username));
         nvps.add(new BasicNameValuePair("password", password));
 
-        HttpPost post = new HttpPost(builder.toURI());
-        post.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
-
-        LOG.log(Level.INFO, "Trying to login... [user = ''{0}'']", username);
+        HttpPost method = new HttpPost(builder.toURI());
+        method.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
 
         ResponseHandler<String> handler = new BasicResponseHandler();
-        drupalClient.getHttpClient().execute(post, handler);
+        getDc().getHttpClient().execute(method, handler);
     }
 
-    /**
-     * Logout a user session.
-     * 
-     * @throws MalformedURLException
-     * @throws ClientProtocolException
-     * @throws UnsupportedEncodingException
-     * @throws IOException 
-     */
-    public void logout() throws MalformedURLException, ClientProtocolException,
-            UnsupportedEncodingException, IOException {
-        URLBuilder builder = new URLBuilder(drupalClient.getHostname());
-        builder
-                .add(drupalClient.getEndpoint())
-                .add(getAlias())
-                .add("logout");
+    public void logout() throws HttpResponseException, IOException {
+        URLBuilder builder = new URLBuilder(getDc().getHostname());
+        builder.add(getDc().getEndpoint());
+        builder.add(getAlias());
+        builder.add("logout");
 
-        HttpPost post = new HttpPost(builder.toURI());
-
-        LOG.log(Level.INFO, "Trying to logout... [user = ''{0}'']", username);
+        HttpPost method = new HttpPost(builder.toURI());
 
         ResponseHandler<String> handler = new BasicResponseHandler();
-        drupalClient.getHttpClient().execute(post, handler);
+        getDc().getHttpClient().execute(method, handler);
     }
 
     @Override

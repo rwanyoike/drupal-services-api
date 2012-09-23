@@ -16,61 +16,25 @@
  */
 package dk.i2m.drupal.core;
 
-import dk.i2m.drupal.util.URLBuilder;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.BasicResponseHandler;
-
 /**
  * Base class for {@link ResourceCRUD} implementations.
  * 
  * @author Raymond Wanyoike <rwa at i2m.dk>
  */
-public abstract class AbstractResourceCRUD implements ResourceCRUD {
+public abstract class AbstractResourceCRUD {
 
-    private DrupalClient drupalClient;
+    private final DrupalClient dc;
 
-    public AbstractResourceCRUD(DrupalClient drupalClient) {
-        this.drupalClient = drupalClient;
-    }
-
-    @Override
-    public <T> T create(UrlEncodedFormEntity uefe) throws MalformedURLException,
-            ClientProtocolException, UnsupportedEncodingException, IOException {
-        URLBuilder builder = new URLBuilder(drupalClient.getHostname());
-        builder
-                .add(drupalClient.getEndpoint())
-                .add(getAlias());
-
-        HttpPost post = new HttpPost(builder.toURI());
-        post.setEntity(uefe);
-
-        ResponseHandler<String> handler = new BasicResponseHandler();
-        String response = drupalClient.getHttpClient().execute(post, handler);
-
-        return (T) response;
-    }
-
-    @Override
-    public void retrieve() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public <T> T update(UrlEncodedFormEntity uefe) throws MalformedURLException,
-            ClientProtocolException, UnsupportedEncodingException, IOException {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void delete() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public AbstractResourceCRUD(DrupalClient dc) {
+        this.dc = dc;
     }
 
     public abstract String getAlias();
+
+    /**
+     * @return the dc
+     */
+    public DrupalClient getDc() {
+        return dc;
+    }
 }

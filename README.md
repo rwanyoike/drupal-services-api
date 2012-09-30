@@ -6,14 +6,24 @@ This library is an easy-to-use Java client library for accessing the Drupal [Ser
 mvn clean install;
 ```
 
-If using Maven (not hosted):
+If using Maven:
 ```xml
 <dependency>
     <groupId>dk.i2m.drupal</groupId>
     <artifactId>services-api-client</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <scope>compile</scope>
 </dependency>
+
+
+<repositories>
+    <repository>
+        <id>m2.i2m.dk</id>
+        <name>I2M Maven Repository</name>
+        <url>http://m2.i2m.dk</url>
+    </repository>
+</repositories>
+
 ```
 
 ## Usage
@@ -132,4 +142,4 @@ Not yet implemented
 5. Open a [Pull Request][1]
 6. Enjoy a refreshing Diet Coke and wait
 
-[1]: http://github.com/raymondwanyoike/drupal-services-api-client/pulls
+[1]: http://scm.i2m.dk/drupal-services-api/pull-request/new

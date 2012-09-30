@@ -59,8 +59,8 @@
     
     <scm>
         <url>http://scm.i2m.dk/drupal-services-api/</url>
-        <developerConnection>scm:git:https://allani2m@bitbucket.org/interactivemediamanagement/drupal-services-api.git</developerConnection>
-        <connection>scm:git:https://allani2m@bitbucket.org/interactivemediamanagement/drupal-services-api.git</connection>
+        <developerConnection>scm:git:https://bitbucket.org/interactivemediamanagement/drupal-services-api.git</developerConnection>
+        <connection>scm:git:git://bitbucket.org/interactivemediamanagement/drupal-services-api.git</connection>
     </scm>
 
     <dependencies>

@@ -27,7 +27,7 @@ import org.apache.http.NameValuePair;
 public interface FormAPIField<T> {
 
     /**
-     * Add another field value. (Used by multivalued fields)
+     * Add another field value. (Used by multivalued fields).
      *
      * @param field the field to add
      */
@@ -37,8 +37,8 @@ public interface FormAPIField<T> {
      * Setup the HTTP form parameter(s) for this field.
      *
      * @param language the field language
-     * @param nvps a {@link List} to append the parameters
-     * @return the appended List
+     * @param nvps a {@link Set} to append the parameters
+     * @return the appended {@link Set}
      */
     public Set<NameValuePair> setup(String language, Set<NameValuePair> nvps);
 }

@@ -18,8 +18,8 @@ package dk.i2m.drupal.core;
 
 /**
  * Base class for {@link ResourceCRUD} implementations.
- * 
- * @author Raymond Wanyoike <rwa at i2m.dk>
+ *
+ * @author <a href="mailto:rwa@i2m.dk">Raymond Wanyoike</a>
  */
 public abstract class AbstractResourceCRUD {
 

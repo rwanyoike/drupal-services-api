@@ -23,22 +23,20 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 /**
  * Base class for {@link DrupalClient} implementations.
- * 
- * @author Raymond Wanyoike <rwa at i2m.dk>
+ *
+ * @author <a href="mailto:rwa@i2m.dk">Raymond Wanyoike</a>
  */
 public abstract class AbstractDrupalClient implements DrupalClient {
 
     private DefaultHttpClient httpClient;
-
     private URI hostname;
-
     private String endpoint;
 
     /**
      * Creates a new Drupal client.
-     * 
-     * @param hostname  the druapl server URL
-     * @param endPoint  the services endpoint
+     *
+     * @param hostname the druapl server URL
+     * @param endPoint the services endpoint
      */
     public AbstractDrupalClient(URI hostname, String endPoint) {
         this(new DrupalHttpClient(), hostname, endPoint);
@@ -46,10 +44,10 @@ public abstract class AbstractDrupalClient implements DrupalClient {
 
     /**
      * Creates a new Drupal client.
-     * 
-     * @param httpClient    configured {@link HttpClient} 
-     * @param hostname      the druapl server URL
-     * @param endpoint      the services endpoint
+     *
+     * @param httpClient configured {@link HttpClient}
+     * @param hostname the druapl server URL
+     * @param endpoint the services endpoint
      */
     public AbstractDrupalClient(DefaultHttpClient httpClient, URI hostname,
             String endpoint) {

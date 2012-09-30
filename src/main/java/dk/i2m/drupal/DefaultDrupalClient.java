@@ -20,26 +20,33 @@ import dk.i2m.drupal.core.AbstractDrupalClient;
 import java.net.URI;
 
 /**
- * Default implementation of {@link DrupalClient} pre-configured for most 
- * common use scenarios.
- * 
- * @author Raymond Wanyoike <rwa at i2m.dk>
+ * Default implementation of {@link DrupalClient} pre-configured for most common
+ * use scenarios.
+ *
+ * @author <a href="mailto:rwa@i2m.dk">Raymond Wanyoike</a>
  */
 public class DefaultDrupalClient extends AbstractDrupalClient {
 
     /**
      * Creates a new Drupal client from a hostname and endpoint.
-     * 
-     * @param hostname  the druapl server URL
-     * @param endPoint  the services endpoint
+     *
+     * @param hostname the Drupal server URL
+     * @param endPoint the services endpoint
      */
     public DefaultDrupalClient(URI hostname, String endPoint) {
         super(hostname, endPoint);
     }
 
-    public DefaultDrupalClient(URI hostname, String endpoint,
-            int connectionTimeout, int socketTimeout) {
-        super(new DrupalHttpClient(connectionTimeout, socketTimeout), hostname,
-                endpoint);
+    /**
+     * Creates a new Drupal client from a hostname and endpoint. Furthermore you
+     * can specify the connection and socket timeout.
+     *
+     * @param hostname Drupal server URL
+     * @param endpoint Services endpoint
+     * @param connectionTimeout Connection timeout (in ms)
+     * @param socketTimeout Socket timeout (in ms)
+     */
+    public DefaultDrupalClient(URI hostname, String endpoint, int connectionTimeout, int socketTimeout) {
+        super(new DrupalHttpClient(connectionTimeout, socketTimeout), hostname, endpoint);
     }
 }

@@ -23,10 +23,10 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.protocol.HTTP;
 
 /**
- * Default implementation of {@link HttpClient} pre-configured for 
+ * Default implementation of {@link HttpClient} pre-configured for
  * {@link DrupalClient}.
- * 
- * @author Raymond Wanyoike <rwa at i2m.dk>
+ *
+ * @author <a href="mailto:rwa@i2m.dk">Raymond Wanyoike</a>
  */
 public class DrupalHttpClient extends DefaultHttpClient {
 
@@ -34,8 +34,7 @@ public class DrupalHttpClient extends DefaultHttpClient {
         BasicHttpParams params = new BasicHttpParams();
         params
                 .setParameter(AllClientPNames.CONNECTION_TIMEOUT, 30000)
-                .setParameter(AllClientPNames.COOKIE_POLICY,
-                CookiePolicy.BEST_MATCH)
+                .setParameter(AllClientPNames.COOKIE_POLICY, CookiePolicy.BEST_MATCH)
                 .setParameter(AllClientPNames.HTTP_CONTENT_CHARSET, HTTP.UTF_8)
                 .setParameter(AllClientPNames.SO_TIMEOUT, 30000);
 
@@ -45,10 +44,8 @@ public class DrupalHttpClient extends DefaultHttpClient {
     DrupalHttpClient(int connectionTimeout, int socketTimeout) {
         BasicHttpParams params = new BasicHttpParams();
         params
-                .setParameter(AllClientPNames.CONNECTION_TIMEOUT,
-                connectionTimeout)
-                .setParameter(AllClientPNames.COOKIE_POLICY,
-                CookiePolicy.BEST_MATCH)
+                .setParameter(AllClientPNames.CONNECTION_TIMEOUT, connectionTimeout)
+                .setParameter(AllClientPNames.COOKIE_POLICY, CookiePolicy.BEST_MATCH)
                 .setParameter(AllClientPNames.HTTP_CONTENT_CHARSET, HTTP.UTF_8)
                 .setParameter(AllClientPNames.SO_TIMEOUT, socketTimeout);
 

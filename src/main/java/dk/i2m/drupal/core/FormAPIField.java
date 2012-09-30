@@ -21,24 +21,24 @@ import org.apache.http.NameValuePair;
 
 /**
  * Attach custom data fields to Drupal entities.
- * 
- * @author Raymond Wanyoike <rwa at i2m.dk>
+ *
+ * @author <a href="mailto:rwa@i2m.dk">Raymond Wanyoike</a>
  */
 public interface FormAPIField<T> {
 
     /**
      * Add another field value. (Used by multivalued fields)
-     * 
-     * @param field     the field to add
+     *
+     * @param field the field to add
      */
     public void add(T field);
 
     /**
      * Setup the HTTP form parameter(s) for this field.
-     * 
-     * @param language  the field language
-     * @param nvps      a {@link List} to append the parameters
-     * @return          the appended List
+     *
+     * @param language the field language
+     * @param nvps a {@link List} to append the parameters
+     * @return the appended List
      */
     public Set<NameValuePair> setup(String language, Set<NameValuePair> nvps);
 }

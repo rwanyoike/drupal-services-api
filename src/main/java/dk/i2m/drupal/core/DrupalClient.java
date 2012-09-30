@@ -21,8 +21,8 @@ import org.apache.http.client.HttpClient;
 
 /**
  * Provides a generic but powerful API for web services.
- * 
- * @author Raymond Wanyoike <rwa at i2m.dk>
+ *
+ * @author <a href="mailto:rwa@i2m.dk">Raymond Wanyoike</a>
  */
 public interface DrupalClient {
 
@@ -38,22 +38,22 @@ public interface DrupalClient {
 
     /**
      * Return the {@link HttpClient}.
-     * 
-     * @return  the HTTP client
+     *
+     * @return the HTTP client
      */
     public HttpClient getHttpClient();
 
     /**
      * Return the Drupal server URL.
-     * 
-     * @return  the hostname
+     *
+     * @return the hostname
      */
     public URI getHostname();
 
     /**
      * Return the services endpoint.
-     * 
-     * @return  the endpoint
+     *
+     * @return the endpoint
      */
     public String getEndpoint();
 }

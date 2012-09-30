@@ -24,50 +24,50 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 
 /**
  * Resources that implement the common CRUD operations on their entities.
- * 
- * @author Raymond Wanyoike <rwa at i2m.dk>
+ *
+ * @author <a href="mailto:rwa@i2m.dk">Raymond Wanyoike</a>
  */
 public interface ResourceCRUD {
 
     /**
      * Creates a resource.
-     * 
+     *
      * @param <T>
      * @param uefe
      * @return
      * @throws MalformedURLException
      * @throws ClientProtocolException
      * @throws UnsupportedEncodingException
-     * @throws IOException 
+     * @throws IOException
      */
     public <T> T create(UrlEncodedFormEntity uefe) throws MalformedURLException,
             ClientProtocolException, UnsupportedEncodingException, IOException;
 
     /**
      * Retrieves a resource.
-     * 
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     public void retrieve() throws IOException;
 
     /**
      * Updates a resource.
-     * 
+     *
      * @param <T>
      * @param uefe
      * @return
      * @throws MalformedURLException
      * @throws ClientProtocolException
      * @throws UnsupportedEncodingException
-     * @throws IOException 
+     * @throws IOException
      */
     public <T> T update(UrlEncodedFormEntity uefe) throws MalformedURLException,
             ClientProtocolException, UnsupportedEncodingException, IOException;
 
     /**
      * Deletes a resource.
-     * 
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     public void delete() throws IOException;
 }

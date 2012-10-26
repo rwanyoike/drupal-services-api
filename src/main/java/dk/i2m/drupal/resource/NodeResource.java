@@ -22,7 +22,9 @@ import dk.i2m.drupal.core.AbstractResourceCRUD;
 import dk.i2m.drupal.core.DrupalClient;
 import dk.i2m.drupal.message.FileMessage;
 import dk.i2m.drupal.message.NodeMessage;
+import dk.i2m.drupal.util.EntityUtils;
 import dk.i2m.drupal.util.URLBuilder;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +35,10 @@ import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.BasicResponseHandler;
+import org.apache.tika.mime.MimeTypeException;
 
 /**
  * @author Raymond Wanyoike <rwa at i2m.dk>
@@ -131,6 +136,30 @@ public class NodeResource extends AbstractResourceCRUD {
         builder.add(0); // Do not return the file contents (base64)
 
         HttpGet method = new HttpGet(builder.toURI());
+
+        ResponseHandler<String> handler = new BasicResponseHandler();
+        String response = getDc().getHttpClient().execute(method, handler);
+
+        return new Gson().fromJson(response,
+                new TypeToken<List<FileMessage>>() {
+                }.getType());
+    }
+
+    public List<FileMessage> attachFiles(Long id, Map<File, String> files,
+            String fieldName, boolean attach) throws HttpResponseException,
+            MimeTypeException, IOException {
+        URLBuilder builder = new URLBuilder(getDc().getHostname());
+        builder.add(getDc().getEndpoint());
+        builder.add(getAlias());
+        builder.add(id);
+        builder.add("attach_file");
+
+        MultipartEntity entity = EntityUtils.getMultipartEntity(files);
+        entity.addPart("field_name", new StringBody(fieldName));
+        entity.addPart("attach", new StringBody((attach ? "1" : "0")));
+
+        HttpPost method = new HttpPost(builder.toURI());
+        method.setEntity(entity);
 
         ResponseHandler<String> handler = new BasicResponseHandler();
         String response = getDc().getHttpClient().execute(method, handler);

@@ -81,8 +81,7 @@ public class FileResource extends AbstractResourceCRUD {
         builder.add(getDc().getEndpoint());
         builder.add(getAlias());
         builder.add(id);
-        // Do not return the file contents (saves bandwidth)
-        builder.addQuery("file_contents", 0);
+        builder.addQuery("file_contents", 0); // Do not return the file contents (base64)
 
         HttpGet method = new HttpGet(builder.toURI());
 

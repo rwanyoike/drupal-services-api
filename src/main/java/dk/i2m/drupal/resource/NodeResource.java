@@ -120,15 +120,15 @@ public class NodeResource extends AbstractResourceCRUD {
                 new TypeToken<List<NodeMessage>>() {
                 }.getType());
     }
-    
-    public List<FileMessage> loadFiles(Long id) throws HttpResponseException, IOException {
+
+    public List<FileMessage> loadFiles(Long id) throws HttpResponseException,
+            IOException {
         URLBuilder builder = new URLBuilder(getDc().getHostname());
         builder.add(getDc().getEndpoint());
         builder.add(getAlias());
         builder.add(id);
         builder.add("files");
-        // Do not return the file contents (saves bandwidth)
-        builder.add(0);
+        builder.add(0); // Do not return the file contents (base64)
 
         HttpGet method = new HttpGet(builder.toURI());
 

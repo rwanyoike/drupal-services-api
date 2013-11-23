@@ -83,13 +83,18 @@ Depending on your setup, you may need to login using a UserResource.
 ```java
 UserResource ur = new UserResource(dc, "username", "password");
 NodeResource nr = new NodeResource(dc);
-
+/*
+//This example needs to be updated
 try {
     // Login user
     ur.login();
 
     // Use the create() method to create a node
+	
     NodeResponse response = nr.create(fb.toUrlEncodedFormEntity());
+	
+	//NodeResponse should be replaced with NodeMessage
+	
     System.out.println(response.getId());   // NID e.g. 43
     System.out.println(response.getUri());  // URI e.g. http://www.example.com/node/43
     
@@ -103,7 +108,7 @@ try {
     Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
 } catch (IOException ex) {
     Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-}
+}*/
 ```
 #### File
 TODO: Add example

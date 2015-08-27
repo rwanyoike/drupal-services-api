@@ -8,41 +8,41 @@ import com.google.gson.annotations.SerializedName;
 public class SessionEntity {
 
     @SerializedName("sessid")
-    private String sessionId;
+    private String id;
 
     @SerializedName("session_name")
-    private String sessionName;
+    private String name;
 
     @SerializedName("token")
-    private String csrfToken;
+    private String csrf;
 
     @SerializedName("user")
     private UserEntity userEntity;
 
-    public String getSessionId() {
-        return sessionId;
+    public String getId() {
+        return id;
     }
 
-    public SessionEntity setSessionId(String sessionId) {
-        this.sessionId = sessionId;
+    public SessionEntity setId(String id) {
+        this.id = id;
         return this;
     }
 
-    public String getSessionName() {
-        return sessionName;
+    public String getName() {
+        return name;
     }
 
-    public SessionEntity setSessionName(String sessionName) {
-        this.sessionName = sessionName;
+    public SessionEntity setName(String name) {
+        this.name = name;
         return this;
     }
 
-    public String getCsrfToken() {
-        return csrfToken;
+    public String getCsrf() {
+        return csrf;
     }
 
-    public SessionEntity setCsrfToken(String csrfToken) {
-        this.csrfToken = csrfToken;
+    public SessionEntity setCsrf(String csrf) {
+        this.csrf = csrf;
         return this;
     }
 

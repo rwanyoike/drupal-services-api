@@ -7,8 +7,8 @@ import retrofit.RequestInterceptor;
  */
 public class SessionInterceptor implements RequestInterceptor {
 
-    public static final String COOKIE_HEADER = "Cookie";
-    public static final String TOKEN_HEADER = "X-CSRF-Token";
+    public static final String HEADER_COOKIE = "Cookie";
+    public static final String HEADER_TOKEN = "X-CSRF-Token";
 
     private String sessionId;
     private String sessionName;
@@ -44,10 +44,10 @@ public class SessionInterceptor implements RequestInterceptor {
     @Override
     public void intercept(RequestFacade requestFacade) {
         if (sessionId != null && sessionName != null) {
-            requestFacade.addHeader(COOKIE_HEADER, String.format("%s=%s", sessionName, sessionId));
+            requestFacade.addHeader(HEADER_COOKIE, String.format("%s=%s", sessionName, sessionId));
         }
         if (csrfToken != null) {
-            requestFacade.addHeader(TOKEN_HEADER, csrfToken);
+            requestFacade.addHeader(HEADER_TOKEN, csrfToken);
         }
     }
 }

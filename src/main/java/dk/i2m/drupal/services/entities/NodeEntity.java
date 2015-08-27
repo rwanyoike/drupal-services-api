@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName;
 public class NodeEntity {
 
     @SerializedName("nid")
-    private Integer id;
+    private Long id;
 
     @SerializedName("vid")
-    private Integer vid;
+    private Long vid;
 
     @SerializedName("type")
     private String type;
@@ -23,16 +23,16 @@ public class NodeEntity {
     private String title;
 
     @SerializedName("uid")
-    private Integer uid;
+    private Long uid;
 
     @SerializedName("status")
     private Integer status;
 
     @SerializedName("created")
-    private Integer created;
+    private Long created;
 
     @SerializedName("changed")
-    private Integer changed;
+    private Long changed;
 
     @SerializedName("comment")
     private Integer comment;
@@ -44,25 +44,25 @@ public class NodeEntity {
     private Integer sticky;
 
     @SerializedName("tnid")
-    private Integer tnid;
+    private Long tnid;
 
     @SerializedName("translate")
     private Integer translate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public NodeEntity setId(Integer id) {
+    public NodeEntity setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public Integer getVid() {
+    public Long getVid() {
         return vid;
     }
 
-    public NodeEntity setVid(Integer vid) {
+    public NodeEntity setVid(Long vid) {
         this.vid = vid;
         return this;
     }
@@ -94,11 +94,11 @@ public class NodeEntity {
         return this;
     }
 
-    public Integer getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public NodeEntity setUid(Integer uid) {
+    public NodeEntity setUid(Long uid) {
         this.uid = uid;
         return this;
     }
@@ -112,20 +112,20 @@ public class NodeEntity {
         return this;
     }
 
-    public Integer getCreated() {
+    public Long getCreated() {
         return created;
     }
 
-    public NodeEntity setCreated(Integer created) {
+    public NodeEntity setCreated(Long created) {
         this.created = created;
         return this;
     }
 
-    public Integer getChanged() {
+    public Long getChanged() {
         return changed;
     }
 
-    public NodeEntity setChanged(Integer changed) {
+    public NodeEntity setChanged(Long changed) {
         this.changed = changed;
         return this;
     }
@@ -157,11 +157,11 @@ public class NodeEntity {
         return this;
     }
 
-    public Integer getTnid() {
+    public Long getTnid() {
         return tnid;
     }
 
-    public NodeEntity setTnid(Integer tnid) {
+    public NodeEntity setTnid(Long tnid) {
         this.tnid = tnid;
         return this;
     }

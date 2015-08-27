@@ -18,7 +18,7 @@ public interface UserResourceForm {
     @GET("/{alias}/{uid}")
     UserEntity retrieve(
             @Path("alias") String alias,
-            @Path("uid") Integer uid);
+            @Path("uid") Long uid);
 
     @FormUrlEncoded
     @POST("/{alias}/login")

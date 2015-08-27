@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class UserEntity {
 
     @SerializedName("uid")
-    private Integer id;
+    private Long id;
 
     @SerializedName("name")
     private String name;
@@ -29,10 +29,10 @@ public class UserEntity {
     private String signatureFormat;
 
     @SerializedName("created")
-    private Integer created;
+    private Long created;
 
     @SerializedName("access")
-    private Integer access;
+    private Long access;
 
     @SerializedName("login")
     private Integer login;
@@ -56,11 +56,11 @@ public class UserEntity {
     // @SerializedName("data")
     // private String data;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public UserEntity setId(Integer id) {
+    public UserEntity setId(Long id) {
         this.id = id;
         return this;
     }
@@ -119,20 +119,20 @@ public class UserEntity {
         return this;
     }
 
-    public Integer getCreated() {
+    public Long getCreated() {
         return created;
     }
 
-    public UserEntity setCreated(Integer created) {
+    public UserEntity setCreated(Long created) {
         this.created = created;
         return this;
     }
 
-    public Integer getAccess() {
+    public Long getAccess() {
         return access;
     }
 
-    public UserEntity setAccess(Integer access) {
+    public UserEntity setAccess(Long access) {
         this.access = access;
         return this;
     }

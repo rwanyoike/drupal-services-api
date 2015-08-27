@@ -15,7 +15,7 @@ public interface UserResourceJson {
     @GET("/{alias}/{uid}")
     UserEntity retrieve(
             @Path("alias") String alias,
-            @Path("uid") Integer uid);
+            @Path("uid") Long uid);
 
     @POST("/{alias}/login")
     SessionEntity login(

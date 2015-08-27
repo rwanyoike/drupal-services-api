@@ -8,10 +8,10 @@ import com.google.gson.annotations.SerializedName;
 public class FileEntity {
 
     @SerializedName("fid")
-    private Integer id;
+    private Long id;
 
     @SerializedName("uid")
-    private Integer uid;
+    private Long uid;
 
     @SerializedName("nid")
     private String fileName;
@@ -23,31 +23,31 @@ public class FileEntity {
     private String fileMime;
 
     @SerializedName("filesize")
-    private Integer fileSize;
+    private Long fileSize;
 
     @SerializedName("status")
     private Integer status;
 
     @SerializedName("timestamp")
-    private Integer timestamp;
+    private Long timestamp;
 
     @SerializedName("origname")
     private Integer origName;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public FileEntity setId(Integer id) {
+    public FileEntity setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public Integer getUid() {
+    public Long getUid() {
         return uid;
     }
 
-    public FileEntity setUid(Integer uid) {
+    public FileEntity setUid(Long uid) {
         this.uid = uid;
         return this;
     }
@@ -79,11 +79,11 @@ public class FileEntity {
         return this;
     }
 
-    public Integer getFileSize() {
+    public Long getFileSize() {
         return fileSize;
     }
 
-    public FileEntity setFileSize(Integer fileSize) {
+    public FileEntity setFileSize(Long fileSize) {
         this.fileSize = fileSize;
         return this;
     }
@@ -97,11 +97,11 @@ public class FileEntity {
         return this;
     }
 
-    public Integer getTimestamp() {
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public FileEntity setTimestamp(Integer timestamp) {
+    public FileEntity setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
         return this;
     }

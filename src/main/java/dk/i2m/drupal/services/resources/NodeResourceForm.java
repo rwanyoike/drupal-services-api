@@ -26,7 +26,7 @@ public interface NodeResourceForm {
     @GET("/{alias}/{nid}")
     NodeEntity retrieve(
             @Path("alias") String alias,
-            @Path("nid") Integer nid);
+            @Path("nid") Long nid);
 
     @FormUrlEncoded
     @POST("/{alias}")
@@ -38,13 +38,13 @@ public interface NodeResourceForm {
     @PUT("/{alias}/{nid}")
     NodeEntity update(
             @Path("alias") String alias,
-            @Path("nid") Integer nid,
+            @Path("nid") Long nid,
             @FieldMap Map<String, String> fields);
 
     @DELETE("/{alias}/{nid}")
     Response delete(
             @Path("alias") String alias,
-            @Path("nid") Integer nid);
+            @Path("nid") Long nid);
 
     @GET("/{alias}")
     List<NodeEntity> index(
@@ -54,13 +54,13 @@ public interface NodeResourceForm {
     @GET("/{alias}/{nid}/files")
     List<FileEntity> files(
             @Path("alias") String alias,
-            @Path("nid") Integer nid);
+            @Path("nid") Long nid);
 
     @Multipart
     @POST("/{alias}/{nid}/attach_file")
     List<FileEntity> attachFile(
             @Path("alias") String alias,
-            @Path("nid") Integer nid,
+            @Path("nid") Long nid,
             @Part("field_name") String fieldName,
             @Part("attach") Integer attach,
             @PartMap Map<String, Object> params);

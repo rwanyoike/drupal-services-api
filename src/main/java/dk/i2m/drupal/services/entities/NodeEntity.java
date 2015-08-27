@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class NodeEntity {
 
     @SerializedName("nid")
-    private Integer nid;
+    private Integer id;
 
     @SerializedName("vid")
     private Integer vid;
@@ -49,12 +49,12 @@ public class NodeEntity {
     @SerializedName("translate")
     private Integer translate;
 
-    public Integer getNid() {
-        return nid;
+    public Integer getId() {
+        return id;
     }
 
-    public NodeEntity setNid(Integer nid) {
-        this.nid = nid;
+    public NodeEntity setId(Integer id) {
+        this.id = id;
         return this;
     }
 

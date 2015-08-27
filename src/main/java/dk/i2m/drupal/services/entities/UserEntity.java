@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class UserEntity {
 
     @SerializedName("uid")
-    private Integer uid;
+    private Integer id;
 
     @SerializedName("name")
     private String name;
@@ -56,12 +56,12 @@ public class UserEntity {
     // @SerializedName("data")
     // private String data;
 
-    public Integer getUid() {
-        return uid;
+    public Integer getId() {
+        return id;
     }
 
-    public UserEntity setUid(Integer uid) {
-        this.uid = uid;
+    public UserEntity setId(Integer id) {
+        this.id = id;
         return this;
     }
 

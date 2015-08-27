@@ -25,7 +25,7 @@ Map<String, String> params = new LinkedHashMap<String, String>();
 
 params.put("pagesize", "10"); // Number of items to be returned
 params.put("page", "2"); // Page number of results to return
-params.put("fields", "nid,title"); // Fields you want returned
+params.put("fields", "id,title"); // Fields you want returned
 params.put("parameters[\"type\"]", "article"); // Values used to filter results
 params.put("parameters[\"status\"]", "1"); // ...
 

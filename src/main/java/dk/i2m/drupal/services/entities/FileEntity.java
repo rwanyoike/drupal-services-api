@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 public class FileEntity {
 
     @SerializedName("fid")
-    private Integer fid;
+    private Integer id;
 
     @SerializedName("uid")
     private Integer uid;
@@ -34,12 +34,12 @@ public class FileEntity {
     @SerializedName("origname")
     private Integer origName;
 
-    public Integer getFid() {
-        return fid;
+    public Integer getId() {
+        return id;
     }
 
-    public FileEntity setFid(Integer fid) {
-        this.fid = fid;
+    public FileEntity setId(Integer id) {
+        this.id = id;
         return this;
     }
 

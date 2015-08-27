@@ -67,7 +67,7 @@ When done.
 // Logout of Drupal (invalidate session)
 resource.logout("user");
 
-// Requests are now anonymous
+// Clear SessionInterceptor 
 interceptor
         .setSessionId(null)
         .setSessionName(null)
@@ -77,3 +77,7 @@ interceptor
 ## *ResourceForm, and *ResourceJson
 
 TODO: Explain Retrofit, GSON, and Drupal Services REST Server API limits.
+
+## Files
+
+TODO: Add example.

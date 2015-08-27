@@ -1,6 +1,5 @@
 package dk.i2m.drupal.services.interceptors;
 
-import dk.i2m.drupal.services.entities.SessionEntity;
 import retrofit.RequestInterceptor;
 
 /**
@@ -40,18 +39,6 @@ public class SessionInterceptor implements RequestInterceptor {
     public SessionInterceptor setCsrfToken(String csrfToken) {
         this.csrfToken = csrfToken;
         return this;
-    }
-
-    public void setSession(SessionEntity session) {
-        setSessionId(session.getSessionId());
-        setSessionName(session.getSessionName());
-        setCsrfToken(session.getCsrfToken());
-    }
-
-    public void clearSession() {
-        setSessionId(null);
-        setSessionName(null);
-        setCsrfToken(null);
     }
 
     @Override

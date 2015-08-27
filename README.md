@@ -54,15 +54,24 @@ Map<String, String> params = new EntityConverter<UserEntity>().convert(user);
 
 SessionEntity session = resource.login("user", params);
 
-interceptor.setSession(session); // Requests now carry a session/token
+// Requests now carry a session/token
+interceptor
+        .setSessionId(session.getId())
+        .setSessionName(session.getName())
+        .setCsrfToken(session.getCsrf());
 ```
 
 When done.
 
 ```java
-resource.logout("user"); // Logout of Drupal (invalidate session)
+// Logout of Drupal (invalidate session)
+resource.logout("user");
 
-interceptor.clearSession(); // Requests are now anonymous
+// Requests are now anonymous
+interceptor
+        .setSessionId(null)
+        .setSessionName(null)
+        .setCsrfToken(null);
 ```
 
 ## *ResourceForm, and *ResourceJson

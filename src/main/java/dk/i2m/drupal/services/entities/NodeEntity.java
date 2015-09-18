@@ -1,9 +1,28 @@
+/*
+ * Copyright (C) 2015 Raymond Wanyoike
+ *
+ * This file is part of Converge.
+ *
+ * Converge is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Converge is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Converge. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package dk.i2m.drupal.services.entities;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by raymond on 8/23/15.
+ * Drupal node entity.
  */
 public class NodeEntity {
 
@@ -53,125 +72,111 @@ public class NodeEntity {
         return id;
     }
 
-    public NodeEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public Long getVid() {
         return vid;
     }
 
-    public NodeEntity setVid(Long vid) {
+    public void setVid(Long vid) {
         this.vid = vid;
-        return this;
     }
 
     public String getType() {
         return type;
     }
 
-    public NodeEntity setType(String type) {
+    public void setType(String type) {
         this.type = type;
-        return this;
     }
 
     public String getLanguage() {
         return language;
     }
 
-    public NodeEntity setLanguage(String language) {
+    public void setLanguage(String language) {
         this.language = language;
-        return this;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public NodeEntity setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
-        return this;
     }
 
     public Long getUid() {
         return uid;
     }
 
-    public NodeEntity setUid(Long uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
-        return this;
     }
 
     public Integer getStatus() {
         return status;
     }
 
-    public NodeEntity setStatus(Integer status) {
+    public void setStatus(Integer status) {
         this.status = status;
-        return this;
     }
 
     public Long getCreated() {
         return created;
     }
 
-    public NodeEntity setCreated(Long created) {
+    public void setCreated(Long created) {
         this.created = created;
-        return this;
     }
 
     public Long getChanged() {
         return changed;
     }
 
-    public NodeEntity setChanged(Long changed) {
+    public void setChanged(Long changed) {
         this.changed = changed;
-        return this;
     }
 
     public Integer getComment() {
         return comment;
     }
 
-    public NodeEntity setComment(Integer comment) {
+    public void setComment(Integer comment) {
         this.comment = comment;
-        return this;
     }
 
     public Integer getPromote() {
         return promote;
     }
 
-    public NodeEntity setPromote(Integer promote) {
+    public void setPromote(Integer promote) {
         this.promote = promote;
-        return this;
     }
 
     public Integer getSticky() {
         return sticky;
     }
 
-    public NodeEntity setSticky(Integer sticky) {
+    public void setSticky(Integer sticky) {
         this.sticky = sticky;
-        return this;
     }
 
     public Long getTnid() {
         return tnid;
     }
 
-    public NodeEntity setTnid(Long tnid) {
+    public void setTnid(Long tnid) {
         this.tnid = tnid;
-        return this;
     }
 
     public Integer getTranslate() {
         return translate;
     }
 
-    public NodeEntity setTranslate(Integer translate) {
+    public void setTranslate(Integer translate) {
         this.translate = translate;
-        return this;
     }
 }

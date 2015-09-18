@@ -1,9 +1,28 @@
+/*
+ * Copyright (C) 2015 Raymond Wanyoike
+ *
+ * This file is part of Converge.
+ *
+ * Converge is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Converge is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Converge. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package dk.i2m.drupal.services.entities;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by raymond on 8/23/15.
+ * Drupal file entity.
  */
 public class FileEntity {
 
@@ -38,80 +57,71 @@ public class FileEntity {
         return id;
     }
 
-    public FileEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public Long getUid() {
         return uid;
     }
 
-    public FileEntity setUid(Long uid) {
+    public void setUid(Long uid) {
         this.uid = uid;
-        return this;
     }
 
     public String getFileName() {
         return fileName;
     }
 
-    public FileEntity setFileName(String fileName) {
+    public void setFileName(String fileName) {
         this.fileName = fileName;
-        return this;
     }
 
     public String getUri() {
         return uri;
     }
 
-    public FileEntity setUri(String uri) {
+    public void setUri(String uri) {
         this.uri = uri;
-        return this;
     }
 
     public String getFileMime() {
         return fileMime;
     }
 
-    public FileEntity setFileMime(String fileMime) {
+    public void setFileMime(String fileMime) {
         this.fileMime = fileMime;
-        return this;
     }
 
     public Long getFileSize() {
         return fileSize;
     }
 
-    public FileEntity setFileSize(Long fileSize) {
+    public void setFileSize(Long fileSize) {
         this.fileSize = fileSize;
-        return this;
     }
 
     public Integer getStatus() {
         return status;
     }
 
-    public FileEntity setStatus(Integer status) {
+    public void setStatus(Integer status) {
         this.status = status;
-        return this;
     }
 
     public Long getTimestamp() {
         return timestamp;
     }
 
-    public FileEntity setTimestamp(Long timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
-        return this;
     }
 
     public Integer getOrigName() {
         return origName;
     }
 
-    public FileEntity setOrigName(Integer origName) {
+    public void setOrigName(Integer origName) {
         this.origName = origName;
-        return this;
     }
 }

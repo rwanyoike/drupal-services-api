@@ -1,9 +1,28 @@
+/*
+ * Copyright (C) 2015 Raymond Wanyoike
+ *
+ * This file is part of Converge.
+ *
+ * Converge is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Converge is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Converge. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package dk.i2m.drupal.services.entities;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by raymond on 8/23/15.
+ * Drupal user entity.
  */
 public class UserEntity {
 
@@ -52,7 +71,7 @@ public class UserEntity {
     @SerializedName("init")
     private String init;
 
-    // TODO: Cleanup
+    // FIXME: Depreciated
     // @SerializedName("data")
     // private String data;
 
@@ -60,134 +79,119 @@ public class UserEntity {
         return id;
     }
 
-    public UserEntity setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public UserEntity setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getPass() {
         return pass;
     }
 
-    public UserEntity setPass(String pass) {
+    public void setPass(String pass) {
         this.pass = pass;
-        return this;
     }
 
     public String getMail() {
         return mail;
     }
 
-    public UserEntity setMail(String mail) {
+    public void setMail(String mail) {
         this.mail = mail;
-        return this;
     }
 
     public String getTheme() {
         return theme;
     }
 
-    public UserEntity setTheme(String theme) {
+    public void setTheme(String theme) {
         this.theme = theme;
-        return this;
     }
 
     public String getSignature() {
         return signature;
     }
 
-    public UserEntity setSignature(String signature) {
+    public void setSignature(String signature) {
         this.signature = signature;
-        return this;
     }
 
     public String getSignatureFormat() {
         return signatureFormat;
     }
 
-    public UserEntity setSignatureFormat(String signatureFormat) {
+    public void setSignatureFormat(String signatureFormat) {
         this.signatureFormat = signatureFormat;
-        return this;
     }
 
     public Long getCreated() {
         return created;
     }
 
-    public UserEntity setCreated(Long created) {
+    public void setCreated(Long created) {
         this.created = created;
-        return this;
     }
 
     public Long getAccess() {
         return access;
     }
 
-    public UserEntity setAccess(Long access) {
+    public void setAccess(Long access) {
         this.access = access;
-        return this;
     }
 
     public Integer getLogin() {
         return login;
     }
 
-    public UserEntity setLogin(Integer login) {
+    public void setLogin(Integer login) {
         this.login = login;
-        return this;
     }
 
     public Integer getStatus() {
         return status;
     }
 
-    public UserEntity setStatus(Integer status) {
+    public void setStatus(Integer status) {
         this.status = status;
-        return this;
     }
 
     public String getTimezone() {
         return timezone;
     }
 
-    public UserEntity setTimezone(String timezone) {
+    public void setTimezone(String timezone) {
         this.timezone = timezone;
-        return this;
     }
 
     public String getLanguage() {
         return language;
     }
 
-    public UserEntity setLanguage(String language) {
+    public void setLanguage(String language) {
         this.language = language;
-        return this;
     }
 
     public Integer getPicture() {
         return picture;
     }
 
-    public UserEntity setPicture(Integer picture) {
+    public void setPicture(Integer picture) {
         this.picture = picture;
-        return this;
     }
 
     public String getInit() {
         return init;
     }
 
-    public UserEntity setInit(String init) {
+    public void setInit(String init) {
         this.init = init;
-        return this;
     }
 }

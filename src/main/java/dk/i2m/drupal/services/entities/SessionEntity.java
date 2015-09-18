@@ -1,9 +1,28 @@
+/*
+ * Copyright (C) 2015 Raymond Wanyoike
+ *
+ * This file is part of Converge.
+ *
+ * Converge is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Converge is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Converge. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package dk.i2m.drupal.services.entities;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by raymond on 8/22/15.
+ * Drupal session response.
  */
 public class SessionEntity {
 
@@ -17,41 +36,37 @@ public class SessionEntity {
     private String csrf;
 
     @SerializedName("user")
-    private UserEntity userEntity;
+    private UserEntity user;
 
     public String getId() {
         return id;
     }
 
-    public SessionEntity setId(String id) {
+    public void setId(String id) {
         this.id = id;
-        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public SessionEntity setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return this;
     }
 
     public String getCsrf() {
         return csrf;
     }
 
-    public SessionEntity setCsrf(String csrf) {
+    public void setCsrf(String csrf) {
         this.csrf = csrf;
-        return this;
     }
 
-    public UserEntity getUserEntity() {
-        return userEntity;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public SessionEntity setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
-        return this;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 }
